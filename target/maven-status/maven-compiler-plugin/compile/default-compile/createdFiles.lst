@@ -1,7 +1,6 @@
-br/com/rai/crud_pessoas/Principal.class
-Principal2.class
-br/com/rai/crud_pessoas/Crud_pessoas.class
-br/com/rai/crud_pessoas/PessoaDAO.class
-br/com/rai/crud_pessoas/ConnectionFactory.class
-br/com/rai/crud_pessoas/Pessoa.class
-br/com/rai/crud_pessoas/TestConexao.class
+br\com\rai\crud_pessoas\PessoaDAO.class
+br\com\rai\crud_pessoas\TestConexao.class
+br\com\rai\crud_pessoas\Pessoa.class
+br\com\rai\crud_pessoas\Principal.class
+br\com\rai\crud_pessoas\Crud_pessoas.class
+br\com\rai\crud_pessoas\ConnectionFactory.class

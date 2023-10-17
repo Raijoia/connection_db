@@ -8,13 +8,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionFactory {
-    private final String host = "localhost";
-    private final String port = "3306";
-    private final String user = "root";
-    private final String password = "anima123";
-    private final String db = "20232_usjt_psc_segunda_pessoas";
+    private static final String host = "localhost";
+    private static final String port = "3306";
+    private static final String user = "root";
+    private static final String password = "anima123";
+    private static final String db = "20232_usjt_psc_segunda_pessoas";
     
-    public Connection conectar() throws Exception{
+    public static Connection conectar() throws Exception{
 //        String conection = "jdbc:mysql://" + host + ":" + port + "/" + db;
         String connection = String.format(
             "jdbc:mysql://%s:%s/%s", host, port, db

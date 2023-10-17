@@ -40,4 +40,85 @@ public class PessoaDAO {
         //6 - Fechar a conexão
         connection.close(); // connection.close() já fecha tbm o ps
     }
+    
+    public void atualizar(Pessoa pessoa) throws Exception {
+        String nome = pessoa.getNome();
+        String fone = pessoa.getFone();
+        String email = pessoa.getEmail();
+        int codigo = pessoa.getCodigo();
+        
+        //1 - Especificar o comando SQL
+        String sql = "UPDATE tb_pessoas SET nome = ?, fone = ?, email = ? WHERE cod_pessoa = ?;";
+        
+        //2 - Abrir uma conexão com o MySQL
+        try(
+//              Não precisa do fehcmaneto deles, se fecham sozinho
+                var factory = ConnectionFactory.conectar();
+//              3 - preparar o comando
+                var ps = factory.prepareStatement(sql)
+            ){
+        
+            //4 - Substituir os eventuais placeholders
+            ps.setString(1, nome);
+            ps.setString(2, fone);
+            ps.setString(3, email);
+            ps.setInt(4, codigo);
+            
+            //5 - Executar o comando preparado
+            ps.execute();
+            
+//           6 - fechar a conexão
+//           try-with-resources já fez
+        }
+    }
+     
+    public void deletar(Pessoa pessoa) throws Exception {
+        int codigo = pessoa.getCodigo();
+         
+        //1 - Especificar o comando SQL
+        String sql = "DELETE FROM tb_pessoas WHERE cod_pessoa = ?;";
+         
+        //2 - Abrir uma conexão com o MySQL
+        try(
+//              Não precisa do fehcmaneto deles, se fecham sozinho
+                var factory = ConnectionFactory.conectar();
+//              3 - preparar o comando
+                var ps = factory.prepareStatement(sql)
+            ){
+        
+            //4 - Substituir os eventuais placeholders
+            ps.setInt(1, codigo);
+            
+            //5 - Executar o comando preparado
+            ps.execute();
+            
+//           6 - fechar a conexão
+//           try-with-resources já fez
+        }
+    }
+    
+    public void desativar(Pessoa pessoa) throws Exception {
+        int codigo = pessoa.getCodigo();
+         
+        //1 - Especificar o comando SQL
+        String sql = "UPDATE tb_pessoas SET ativo = 0 WHERE cod_pessoa = ?;";
+         
+        //2 - Abrir uma conexão com o MySQL
+        try(
+//              Não precisa do fehcmaneto deles, se fecham sozinho
+                var factory = ConnectionFactory.conectar();
+//              3 - preparar o comando
+                var ps = factory.prepareStatement(sql)
+            ){
+        
+            //4 - Substituir os eventuais placeholders
+            ps.setInt(1, codigo);
+            
+            //5 - Executar o comando preparado
+            ps.execute();
+            
+//           6 - fechar a conexão
+//           try-with-resources já fez
+        }
+    }
 }

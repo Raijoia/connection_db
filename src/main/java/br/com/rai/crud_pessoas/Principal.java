@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class Principal {
     public static void main(String[] args) throws Exception{
-        String menu = "1-Cadastrar\n2-Atualizar\n8-Sair";
+        String menu = "1-Cadastrar\n3-Atualizar\n4-Deletar\n8-Sair";
         int op;
         
         do {            
@@ -29,6 +29,9 @@ public class Principal {
                     JOptionPane.showMessageDialog(null, "Pessoa cadastrada com sucesso!");
                     break;
                 case 2:
+                    break;
+                case 3:
+                    
                     break;
             }
         } while (op != 8);
