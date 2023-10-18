@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
  */
 public class Principal {
     public static void main(String[] args) throws Exception{
-        String menu = "1-Cadastrar\n3-Atualizar\n4-Deletar\n8-Sair";
+        String menu = "1-Cadastrar\n2-Listar\n3-Atualizar\n4-Deletar\n8-Sair";
         int op;
         
         do {            
             op = Integer.parseInt(JOptionPane.showInputDialog(menu));
             
             switch(op) {
-                case 1:
+                case 1: {
                     String nome = JOptionPane.showInputDialog("Digite o nome");
                     String fone = JOptionPane.showInputDialog("Digite o fone");
                     String email = JOptionPane.showInputDialog("Digite o email");
@@ -28,11 +28,15 @@ public class Principal {
                     pessoaDAO.cadastrar(pessoa);
                     JOptionPane.showMessageDialog(null, "Pessoa cadastrada com sucesso!");
                     break;
-                case 2:
+                }
+                case 2: {
+                    var pessoaDAO = new PessoaDAO();
+                    pessoaDAO.listar();
                     break;
-                case 3:
-                    
+                }
+                case 3:{
                     break;
+                }
             }
         } while (op != 8);
     }

@@ -8,11 +8,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionFactory {
-    private static final String host = "localhost";
-    private static final String port = "3306";
-    private static final String user = "root";
-    private static final String password = "anima123";
-    private static final String db = "20232_usjt_psc_segunda_pessoas";
+    private static final String host = "";
+    private static final String port = "";
+    private static final String user = "";
+    private static final String password = "";
+    private static final String db = "";
     
     public static Connection conectar() throws Exception{
 //        String conection = "jdbc:mysql://" + host + ":" + port + "/" + db;

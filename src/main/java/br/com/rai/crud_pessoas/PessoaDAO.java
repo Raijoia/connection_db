@@ -5,6 +5,7 @@
 package br.com.rai.crud_pessoas;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -20,7 +21,7 @@ public class PessoaDAO {
         String email = pessoa.getEmail();
         
         //1 - Especificar o comando SQL
-        String sql = "INSERT INTO tb_pessoas (nome, fone, email) value (?, ?, ?)";
+        String sql = "INSERT INTO tb_pessoas (nome, fone, email, ativo) value (?, ?, ?, 1)";
         
         //2 - Abrir uma conexão com o MySQL
         var factory = new ConnectionFactory();
@@ -120,5 +121,34 @@ public class PessoaDAO {
 //           6 - fechar a conexão
 //           try-with-resources já fez
         }
+    }
+    
+    public void listar() throws Exception {
+        //1 - Especificar o comando SQL
+        String sql = "SELECT * FROM tb_pessoas";
+        
+        //2 - Abrir uma conexão com o MySQL
+        try (
+            var factory = ConnectionFactory.conectar();
+            //3 - preparar o comando
+            var ps = factory.prepareStatement(sql);
+            
+            //4 - Substituir os eventuais placeholders
+            //5 - Executar o comando preparado
+//          para armazenar o que será devolvido pelo db
+            ResultSet rs = ps.executeQuery();
+        ){
+           //6 - tratar os dados e fechar a conexão, o try já fecha
+           // colocar o cursor do resultSet para a linha debaixo
+            while (rs.next()) {
+                String nome = rs.getString("nome");
+                String fone = rs.getString("fone");
+                String email = rs.getString("email");
+                System.out.printf("nome: %s, fone: %s, email: %s\n",
+                    nome, fone, email
+                );
+            }          
+        }
+        // fechar as conexões (São fechadas automaticamente no try)
     }
 }
